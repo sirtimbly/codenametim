@@ -1,0 +1,16 @@
+input {
+    background-color: scale-color($gray2, $lightness: 56%, $saturation: 8%);
+    border: $primary-border;
+    color: $gray2;
+    padding: 6px;
+    font-size: 1.3rem;
+
+    &:focus {
+        color: $gray1;
+        background-color: scale-color($gray2, $lightness: 86%, $saturation: 18%);
+    }
+
+    &.filler {
+        flex:1 0 auto;
+    }
+}

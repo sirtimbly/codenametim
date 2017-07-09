@@ -1,0 +1,43 @@
+{
+  "name": "codenames-game",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "serve": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Tim B",
+    "url": "https://github.com/sirtimbly"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "pouchdb": "^6.2.0",
+    "pouchdb-authentication": "^0.5.5",
+    "pouchdb-find": "^6.2.0",
+    "pouchdb-live-find": "^0.4.0",
+    "foundation-sites": "^6.4.1",
+    "vue": "git+https://github.com/DanielRosenwasser/vue.git#540a38fb21adb7a7bc394c65e23e6cffb36cd867",
+    "vue-pouch": "0.0.22",
+    "vue-router": "git+https://github.com/DanielRosenwasser/vue-router.git#01b8593cf69c2a5077df45e37e2b24d95bf35ce3"
+  },
+  "devDependencies": {
+    "cross-env": "^5.0.1",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.5",
+    "css-loader": "^0.28.1",
+    "file-loader": "^0.11.2",
+    "json-loader": "^0.5.4",
+    "ts-loader": "^2.0.3",
+    "typescript": "^2.3.2",
+    "vue-loader": "^12.0.3",
+    "vue-template-compiler": "2.2.1",
+    "webpack": "^2.5.0",
+    "webpack-dev-server": "^2.4.5"
+  }
+}

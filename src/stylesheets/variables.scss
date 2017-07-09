@@ -1,0 +1,21 @@
+@import "./colors.scss";
+
+@font-face{ 
+	font-family: 'clear-sans-medium';
+	src: url('/dist/fonts/clearsans_medium_macroman/ClearSans-Medium-webfont.woff') format('woff');
+}
+
+@font-face{ 
+	font-family: 'clear-sans-bold';
+	src: url('/dist/fonts/clearsans_bold_macroman/ClearSans-Bold-webfont.woff') format('woff');
+}
+
+@font-face{ 
+	font-family: 'clear-sans-bolditalic';
+	src: url('/dist/fonts/clearsans_bolditalic_macroman/ClearSans-BoldItalic-webfont.woff') format('woff');
+}
+
+$primary-font: helvetica, arial, sans-serif;
+$base-padding: 12px;
+$base-font-size: 16px;
+$primary-border: 2px solid $dark-gray;

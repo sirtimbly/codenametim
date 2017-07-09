@@ -1,0 +1,19 @@
+.primary {
+    &-block {
+        box-shadow: 4px 4px 0px scale-color($dark-gray, $alpha: -80%);
+        border: $primary-border;
+        display: flex;
+        margin: 4px;
+
+        header {
+            color: $gold;
+            background-color: scale-color($gray1, $lightness: 25%, $saturation: 10%);
+            border-bottom: $primary-border;
+            font-family: 'clear-sans-bold';
+            margin: 0 0 $base-padding;
+            padding: 1rem 0.5rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    }
+}

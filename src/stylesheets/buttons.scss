@@ -1,0 +1,46 @@
+button, .btn {
+    background-color: $green;
+    border: 2px solid scale-color($red, $lightness: -90%);
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+    font-family: $primary-font;
+    padding: $base-padding ($base-padding * 2);
+    font-size: $base-font-size;
+    color: $gray1;
+    margin: 6px;
+    cursor: pointer;
+    text-decoration: none;
+
+    &.router-link-active {
+        background-color: scale-color($green, $lightness: 30%, $saturation: -20%);
+        color: $gray2;
+        box-shadow: 0;
+    }
+
+    &.danger {
+        background-color: $red;
+        color: $white;
+    }
+
+    &:hover {
+        background-color: scale-color($green, $lightness: -10%, $saturation: -10%);
+    }
+}
+
+button.filler, .btn.filler {
+    background: transparent;
+    border-bottom: none;
+    border-top: none;
+    box-shadow: none;
+    color: scale-color($green, $lightness: 10%);
+    cursor: pointer;
+    font-family: $primary-font;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    
+    &:hover {
+        background-color: scale-color($gray1, $lightness: -10%, $saturation: -10%);
+    }
+}

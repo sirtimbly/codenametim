@@ -1,0 +1,169 @@
+
+@import "stylesheets/variables.scss";
+@import "stylesheets/primary.scss";
+@import "stylesheets/buttons.scss";
+@import "stylesheets/tabs.scss";
+@import "stylesheets/forms.scss";
+
+
+
+
+body {
+    background-color: $gray1;
+    color: #dcb8ac;
+    font: $base-font-size Georgia, serif;
+    margin: 8px;
+    padding: 0;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(6, 1fr);
+    width: 100%;
+    min-height: 1vh;
+}
+
+.loader {
+      border: $primary-border;
+        background-color: scale-color($bluish, $lightness: 15%);
+}
+
+.topbar {
+
+    color: $white;
+    padding: 6px 0;
+
+    &__actions {
+        align-content: center;
+        align-items: stretch;
+        background: scale-color($gray2, $lightness: 10%);
+        display: flex;
+        flex-direction: row;
+
+        padding: 1rem;
+        
+    }
+
+    .primary-block {
+        background-color: scale-color($gray1, $lightness: 15%);
+        
+    }
+
+    
+}
+
+
+
+.sidebar {
+    grid-area: 1 / 1 / 2 / 2;
+
+    max-width: 300px;
+    min-width: 100px;
+
+    .primary-block {
+        background-color: scale-color($gray1, $lightness: 15%);
+        flex-direction: column;
+    }
+    
+    a {
+        color: $gold;
+
+        &:visited {
+            color: scale-color($gold, $lightness: -5%);
+        }
+    }
+    
+}
+
+
+
+
+.doc-list {
+    margin: 0 0 10px 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        padding: 0;
+        margin: 0;
+    }
+    a {
+        display: block;
+        padding : $base-padding / 3 $base-padding;
+        color: scale-color($gray1, $lightness: 80%);
+        //color: $gray2;
+        text-decoration: none;
+        margin-bottom: 1px;
+
+        &.router-link-active {
+            background-color: $gray2;
+        }
+    }
+}
+
+.loader__form {
+    align-content: center;
+    align-items: stretch;
+    // border-right: $primary-border;
+    display: flex;
+    flex-direction: row;
+    font: $base-font-size * 0.9 helvetica, sans-serif;
+    margin: 0 auto 0 0;
+    padding: 0;
+
+    input {
+        margin: 1rem;
+    }
+}
+
+.logo {
+    color: $gray1;
+    display: block;
+    font-family: 'clear-sans-bolditalic';
+    font-size: 2.5rem;
+    font-style: italic;
+    margin: 0;
+    padding: 0 10px;
+    text-align: right;
+    text-shadow: 2px 2px 0px scale-color($dark-gray, $alpha: -20%);
+}
+
+
+.document {
+    background-color: scale-color($bluish, $lightness: 15%);
+}
+
+.document__meta {
+    border: 1px solid $brown2;
+    background-color: $gray1;
+    color: #efefef;
+    font-size: 16px;
+    padding: 1em;
+    
+    
+}
+
+.tile {
+    flex:1 0 310px;
+    align-self: stretch;
+    max-width: 100%;
+    min-height: 10rem;
+    margin: 5px;
+}
+
+.tile:nth-child(2n+3){
+    flex-basis:300px;
+  }
+.tile:nth-child(4n+5){
+    flex-basis:450px;
+  }
+  
+
+.object-items {
+    
+    padding-left: 1em;
+    line-height: 1.5em;
+    list-style-type: dot;
+}
+
