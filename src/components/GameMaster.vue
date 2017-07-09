@@ -1,7 +1,14 @@
 <template>
-<div>
-  <div>Game Master Controls for {{username}} (You are the {{ myColor }} spymaster!)</div>
-  <input type="text" v-model="clue" /><button @click="share">Set Clue</button>
+<div class="callout">
+  <div>{{username}} (You are the {{ myColor }} spymaster!)</div>
+  <div class="grid-x">
+    <div class="small-9 cell">
+      <input type="text" v-model="clue" />
+    </div>
+    <div class="small-3 cell">
+      <button type="button" class="button primary expand" @click="share"><i class="fa fa-arrow-right"></i> Set Clue</button>
+    </div>
+  </div>
   
 </div>
 </template>

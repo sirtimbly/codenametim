@@ -8,12 +8,17 @@ import * as vuePouch from 'vue-pouch';
 import {Game, Tile, TileType} from './models/Game';
 
 import GameLoader from './components/GameLoader.vue';
+import GameMenu from './components/GameMenu.vue';
 import GameCreator from './components/GameCreator.vue';
 import GameViewer from './components/GameViewer.vue';
 import GameMaster from './components/GameMaster.vue';
 
 const router = new VueRouter({
   routes: [
+      {
+        path: '/',
+        component: GameMenu,
+      },
     // dynamic segments start with a colon
     {
         path: '/new',
@@ -67,7 +72,8 @@ let v = new Vue(<ComponentOptions<any, any, any, any>>{
         GameViewer,
         GameLoader,
         GameCreator,
-        GameMaster
+        GameMaster,
+        GameMenu
     },
     router
 

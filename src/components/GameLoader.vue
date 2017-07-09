@@ -2,28 +2,28 @@
 
   <div class="gameboard">
       
-      <div class="topbar">
-          <div class="blue">Blue Spymaster says: <strong>"{{latestClue('blue')}}"</strong> </div>
-          <div class="red">Red Spymaster says: <strong>"{{latestClue('red')}}"</strong> </div>
+      <div class="top-bar">
+          <div class="blue top-bar-left"> <i class="fa fa-user" v-if="currentGame.blueSpymaster !== 'pending'"></i> Blue Spymaster says: <strong>"{{latestClue('blue')}}"</strong> </div>
+          <div class="red top-bar-right"> <i class="fa fa-user" v-if="currentGame.redSpymaster !== 'pending'"></i> Red Spymaster says: <strong>"{{latestClue('red')}}"</strong> </div>
       </div>
     <router-view :game="currentGame" :username="username" :showType="isMaster" @show="showCard"></router-view>
     <div v-if="isMaster">
         <game-master :game="currentGame" :username="username" :showType="isMaster"></game-master>
-        <button @click="resign">Resign as Spy Master</button>
+        <button type="button" class="button warning" @click="resign">Resign as Spy Master</button>
     </div>
     
     <div v-else-if="currentGame.redSpymaster == 'pending' || currentGame.blueSpymaster == 'pending'">
-        My name is <input v-model="username" /> and 
-        <button @click="setMaster('red')">I'm the Red Spymaster</button>    
-        <button @click="setMaster('blue')">I'm the Blue Spymaster</button>    
+        <label for="">My Username is</label><input type="text" v-model="username" /> and 
+        <button type="button" class="button primary" @click="setMaster('red')" v-if="currentGame.redSpymaster == 'pending'">I'm the Red Spymaster</button>    
+        <button type="button" class="button primary" @click="setMaster('blue')" v-if="currentGame.blueSpymaster == 'pending'">I'm the Blue Spymaster</button>    
     </div>
     <div v-else>
         <div v-if="loggingIn">
-            No Cheating!
-            <button @click="login('red')">Red</button>
-            <button @click="login('blue')">Blue</button>
+            Spymaster Re-connect: No Cheating!
+            <button type="button" class="button alert" @click="login('red')">Red</button>
+            <button type="button" class="button primary" @click="login('blue')">Blue</button>
         </div>
-        <button v-else @click="loggingIn = true">Spymaster Section</button>
+        <button type="button" class="button primary" v-else @click="loggingIn = true">Spymaster Section</button>
     </div>
     
   </div>
@@ -128,7 +128,7 @@ export default Vue.component('game-loader', <ComponentOptions<any, any, any, any
 </script>
 
 <style lang="scss">
-@import '~foundation-sites/scss/foundation.scss';
+// @import '~foundation-sites/scss/foundation.scss';
 
 h1 {
         font-family: Arial, Helvetica, sans-serif;

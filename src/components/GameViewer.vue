@@ -3,7 +3,7 @@
     <ul class="wordlist" v-if="game" >
       <li class="tile" v-for="tile in game.tiles" :key="tile.word" :class="getStyle(tile)" >
         {{tile.word}} <span v-if="!tile.hidden"><i class="fa fa-check"></i></span>
-        <div v-if="showType"><button @click="showing(tile)">reveal</button></div>
+        <div v-if="showType"><button type="button" @click="showing(tile)">reveal</button></div>
       </li>
     </ul>
   </div>
@@ -36,6 +36,7 @@ export default Vue.component('game-viewer', <ComponentOptions<any, any, any, any
 <style lang="scss">
 
 .wordlist {
+    box-sizing: border-box;
     list-style:none;
     display: flex;
     flex-wrap: wrap;
@@ -43,14 +44,19 @@ export default Vue.component('game-viewer', <ComponentOptions<any, any, any, any
     padding: 0;
 }
 .tile {
+    box-sizing: border-box;
     display: block;
     padding: 20px 6px;
     border: 2px solid #444;
-    width: 15%;
-    margin: 5px;
+    width: 18%;
+    margin: 0 5px 5px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+
+    @media only screen and (max-width: 480px)  {
+      width: 100%;
+    }
 }
 .hidden {
   background-color: #dedede;
