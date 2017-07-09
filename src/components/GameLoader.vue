@@ -23,7 +23,7 @@
             <button type="button" class="button alert" @click="login('red')">Red</button>
             <button type="button" class="button primary" @click="login('blue')">Blue</button>
         </div>
-        <button type="button" class="button primary" v-else @click="loggingIn = true">Spymaster Section</button>
+        <button type="button" class="button secondary" v-else @click="loggingIn = true">Spymaster Re-connect</button>
     </div>
     
   </div>

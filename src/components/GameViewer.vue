@@ -3,7 +3,7 @@
     <ul class="wordlist" v-if="game" >
       <li class="tile" v-for="tile in game.tiles" :key="tile.word" :class="getStyle(tile)" >
         {{tile.word}} <span v-if="!tile.hidden"><i class="fa fa-check"></i></span>
-        <div v-if="showType"><button type="button" @click="showing(tile)">reveal</button></div>
+        <div v-if="showType"><button type="button" class="button secondary" @click="showing(tile)">reveal</button></div>
       </li>
     </ul>
   </div>
