@@ -1,11 +1,11 @@
 <template>
-
-  <div class="gameboard">
-      
-      <div class="top-bar">
+    <div>
+        <div class="top-bar">
           <div class="blue top-bar-left"> <i class="fa fa-user" v-if="currentGame.blueSpymaster !== 'pending'"></i> Blue Spymaster says: <strong>"{{latestClue('blue')}}"</strong> </div>
           <div class="red top-bar-right"> <i class="fa fa-user" v-if="currentGame.redSpymaster !== 'pending'"></i> Red Spymaster says: <strong>"{{latestClue('red')}}"</strong> </div>
       </div>
+  
+  <div class="gameboard">
     <router-view :game="currentGame" :username="username" :showType="isMaster" @show="showCard"></router-view>
     <div v-if="isMaster">
         <game-master :game="currentGame" :username="username" :showType="isMaster"></game-master>
@@ -27,6 +27,7 @@
     </div>
     
   </div>
+</div>
 </template>
 
 
@@ -134,8 +135,12 @@ h1 {
         font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
+.gameboard {
         font-family: Arial, Helvetica, sans-serif;
+        padding: 2em;
+         @media only screen and (max-width: 480px)  {
+            padding: 2px;
+        }
 }
 
 .red {

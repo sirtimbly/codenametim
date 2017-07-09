@@ -22,6 +22,7 @@ const router = new VueRouter({
     // dynamic segments start with a colon
     {
         path: '/new',
+        name: 'new',
         component: GameCreator
     },
     { path: '/game/:id', 
