@@ -11,7 +11,7 @@
       
       <div v-if="winner" class="callout warning">
           <h2>{{winner}}</h2>
-          <button type="button" class="button primary" @click="showBoard = !showBoard">Show/Hide Board</button>
+          <router-link class="button primary" :to="{name: 'new'}">Start a new Game</router-link>
       </div>
   <div class="gameboard">
     <router-view :game="currentGame" :username="username" :showType="showBoard" :isMaster="isMaster" @show="showCard"></router-view>
@@ -54,7 +54,7 @@ export default Vue.component('game-loader', <ComponentOptions<any, any, any, any
             allNouns: nouns,
             username: '',
             loggingIn: false,
-            showBoard: false
+            // showBoard: false
             // isMaster: false
         }
     },
@@ -80,7 +80,7 @@ export default Vue.component('game-loader', <ComponentOptions<any, any, any, any
         assassin: function() {
             return this.currentGame.tiles.filter(t => t.type === TileType.Assassin)[0];
         },
-        winner: function() {
+        winner: function():string {
             let result = '';
             
             if (this.assassin.hidden === false) {
@@ -92,6 +92,9 @@ export default Vue.component('game-loader', <ComponentOptions<any, any, any, any
             }
             return result;
 
+        },
+        showBoard: function():boolean {
+            return (!!this.winner);
         }
     },
     methods: {

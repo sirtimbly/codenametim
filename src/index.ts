@@ -63,7 +63,7 @@ let v = new Vue(<ComponentOptions<any, any, any, any>>{
     template: `
     <div>
         
-        <h5><router-link :to="'home'">Code-Words</router-link></h5>
+        <h5><router-link :to="{name:'home'}">Code-Words</router-link></h5>
         <router-view></router-view>
     </div>
     `,
