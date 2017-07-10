@@ -69,8 +69,8 @@ export default Vue.extend(<ComponentOptions<any, any, any, any>>{
             let assassin = this.getRandomInt(0, 24);
             let reds = new Array<number>();
             let blues = new Array<number>();
-            let redCount = this.getRandomInt(8,9);
-            let blueCount = this.redCount === 8 ? 9 : 8;
+            let redCount = 8;
+            let blueCount = 9;
             while (reds.length < redCount) {
                 let x = this.getRandomInt(0, 24);
                 if (x !== assassin && reds.indexOf(x) === -1) {
