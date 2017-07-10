@@ -62,8 +62,9 @@ let v = new Vue(<ComponentOptions<any, any, any, any>>{
     el: "#app",
     template: `
     <div>
-        
-        <h5><router-link :to="{name:'home'}">Code-Words</router-link></h5>
+        <div class="top-bar primary">
+            <h5 class="logo"><router-link :to="{name:'home'}">Code-Words</router-link></h5>
+        </div> 
         <router-view></router-view>
     </div>
     `,

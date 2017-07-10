@@ -85,10 +85,13 @@ export default Vue.component('game-loader', <ComponentOptions<any, any, any, any
             
             if (this.assassin.hidden === false) {
                 result = 'The ASSASSIN got you all! No winner.'
+                this.finishGame(TileType.Assassin);
             } else if (this.redCorrect.length >= this.redTiles.length) {
                 result = 'Red Team Wins!';
+                this.finishGame(TileType.Red);
             } else if (this.blueCorrect.length >= this.blueTiles.length) {
                 result = 'Blue Team Wins!';
+                this.finishGame(TileType.Blue);
             }
             return result;
 
@@ -129,16 +132,22 @@ export default Vue.component('game-loader', <ComponentOptions<any, any, any, any
             update[this.myColor+"Spymaster"] = 'pending';
             this.$pouch.put('codename', update);
         },
-        showCard: function(event) {
-            console.log("showing card: " + JSON.stringify(event));
+        showCard: function(eventData:Tile) {
+            console.log("showing card: " + JSON.stringify(eventData));
             let update = this.currentGame as Game;
-            update.tiles = this.currentGame.tiles.map(t => {
-                if (t.word === event.word) {
-                    event.hidden = false;
-                    return event;
+            update.tiles = update.tiles.map(t => {
+                if (t.word === eventData.word) {
+                    eventData.hidden = false;
+                    return eventData;
                 }
                 return t;
             });
+            this.$pouch.put('codename', update);
+        },
+        finishGame: function(winner:TileType) {
+            let update = this.currentGame as Game;
+            update.winningTeam = winner;
+            update.isWon = true;
             this.$pouch.put('codename', update);
         }
     },

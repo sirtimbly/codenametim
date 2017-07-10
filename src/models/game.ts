@@ -7,6 +7,8 @@ export class Game {
     redClues: string[];
     blueSpymaster:string;
     blueClues: string[];
+    isWon:boolean;
+    winningTeam:TileType;
 
     public constructor(obj:any) {
         this._id = obj._id || '';
