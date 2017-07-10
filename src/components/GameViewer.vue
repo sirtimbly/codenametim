@@ -3,7 +3,7 @@
     <ul class="wordlist" v-if="game" >
       <li class="tile" v-for="tile in game.tiles" :key="tile.word" :class="getStyle(tile)" >
         {{tile.word}} <span v-if="!tile.hidden"><i class="fa fa-check"></i></span>
-        <div v-if="showType"><button type="button" class="button secondary" @click="showing(tile)">reveal</button></div>
+        <div v-if="isMaster"><button type="button" class="button secondary" @click="showing(tile)">reveal</button></div>
       </li>
     </ul>
   </div>
@@ -16,10 +16,10 @@ import {ComponentOptions} from 'vue/types/options';
 import {Game,Tile,TileType} from '../models/game';
 
 export default Vue.component('game-viewer', <ComponentOptions<any, any, any, any>>{
-    props: ['game', 'showType'],
+    props: ['game', 'showType', 'isMaster'],
     methods: {
       getStyle: function(value:Tile) {
-        if (this.showType || value.hidden == false) {
+        if (this.isMaster || this.showType || value.hidden == false) {
           return TileType[value.type];
         } else { 
           return 'hidden';

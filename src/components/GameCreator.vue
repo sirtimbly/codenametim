@@ -69,13 +69,15 @@ export default Vue.extend(<ComponentOptions<any, any, any, any>>{
             let assassin = this.getRandomInt(0, 24);
             let reds = new Array<number>();
             let blues = new Array<number>();
-            while (reds.length < 6) {
+            let redCount = this.getRandomInt(8,9);
+            let blueCount = this.redCount === 8 ? 9 : 8;
+            while (reds.length < redCount) {
                 let x = this.getRandomInt(0, 24);
                 if (x !== assassin && reds.indexOf(x) === -1) {
                     reds.push(x);
                 }
             }
-            while (blues.length < 6) {
+            while (blues.length < blueCount) {
                 let x = this.getRandomInt(0, 24);
                 if (x !== assassin && blues.indexOf(x) === -1 && reds.indexOf(x) === -1) {
                     blues.push(x);

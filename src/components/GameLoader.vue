@@ -4,9 +4,17 @@
           <div class="blue top-bar-left"> <i class="fa fa-user" v-if="currentGame.blueSpymaster !== 'pending'"></i> Blue Spymaster says: <strong>"{{latestClue('blue')}}"</strong> </div>
           <div class="red top-bar-right"> <i class="fa fa-user" v-if="currentGame.redSpymaster !== 'pending'"></i> Red Spymaster says: <strong>"{{latestClue('red')}}"</strong> </div>
       </div>
-  
+        <div class="top-bar">
+          <div class="blue top-bar-left"> {{blueCorrect.length}} of {{blueTiles.length}} </div>
+          <div class="red top-bar-right"> {{redCorrect.length}} of {{redTiles.length}} </div>
+      </div>
+      
+      <div v-if="winner" class="callout warning">
+          <h2>{{winner}}</h2>
+          <button type="button" class="button primary" @click="showBoard = !showBoard">Show/Hide Board</button>
+      </div>
   <div class="gameboard">
-    <router-view :game="currentGame" :username="username" :showType="isMaster" @show="showCard"></router-view>
+    <router-view :game="currentGame" :username="username" :showType="showBoard" :isMaster="isMaster" @show="showCard"></router-view>
     <div v-if="isMaster">
         <game-master :game="currentGame" :username="username" :showType="isMaster"></game-master>
         <button type="button" class="button warning" @click="resign">Resign as Spy Master</button>
@@ -46,15 +54,44 @@ export default Vue.component('game-loader', <ComponentOptions<any, any, any, any
             allNouns: nouns,
             username: '',
             loggingIn: false,
+            showBoard: false
             // isMaster: false
         }
     },
     computed: {
-        isMaster: function() {
+        isMaster: function() {    
             return (this.username === this.currentGame.redSpymaster || this.username === this.currentGame.blueSpymaster);
         },
         myColor: function() {
             return this.currentGame.redSpymaster === this.username ? 'red' : 'blue';
+        },
+        redTiles: function(){
+            return this.currentGame.tiles.filter(t => t.type === TileType.Red);
+        },
+        blueTiles: function() {
+            return this.currentGame.tiles.filter(t => t.type === TileType.Blue);
+        },
+        redCorrect: function() {
+            return this.redTiles.filter(t => t.hidden === false);
+        },
+        blueCorrect: function() {
+            return this.blueTiles.filter(t => t.hidden === false);
+        },
+        assassin: function() {
+            return this.currentGame.tiles.filter(t => t.type === TileType.Assassin)[0];
+        },
+        winner: function() {
+            let result = '';
+            
+            if (this.assassin.hidden === false) {
+                result = 'The ASSASSIN got you all! No winner.'
+            } else if (this.redCorrect.length >= this.redTiles.length) {
+                result = 'Red Team Wins!';
+            } else if (this.blueCorrect.length >= this.blueTiles.length) {
+                result = 'Blue Team Wins!';
+            }
+            return result;
+
         }
     },
     methods: {
