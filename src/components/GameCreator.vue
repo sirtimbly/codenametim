@@ -3,17 +3,22 @@
   <div class="gameboard">
       <div class="callout">
         <h4>Create New Game</h4>
-      
-          
+        <div>
+            <radiogroup class="grid-x bordered">
+                <div class="cell medium-5"><strong>Starting Team:</strong></div>
+                <div class="cell medium-1 blue"><input type="radio" id="blue" v-model="startingTeam" value="blue"/> Blue</div>
+                <div class="cell medium-1 red"><input type="radio" id="red" v-model="startingTeam" value="red"/> Red</div>
+            </radiogroup>
+        </div> 
         <div class="cell medium-6">
             <label for="">Name your new game  <input type="text" v-model="name" /></label>           
         </div>
         <div class="grid-x grid-gutter-x">
             <div class="cell medium-6">
-                <button class="button warning" @click="pickWords()">Regenerate List</button>
+                <button class="button warning" @click="pickWords()"><i class="fa fa-random"></i> Regenerate List</button>
             </div>
             <div class="cell medium-offset-4 medium-2 right">
-                <button class="button primary expanded" @click="create">Create</button>
+                <button class="button success expanded" @click="create">Create</button>
             </div>
         </div>
       </div>
@@ -35,7 +40,8 @@ export default Vue.extend(<ComponentOptions<any, any, any, any>>{
         return {
             name: '',
             pickedWords: [],
-            allNouns: nouns
+            allNouns: nouns,
+            startingTeam: 'blue'
         }
     },
     computed: {
@@ -70,7 +76,13 @@ export default Vue.extend(<ComponentOptions<any, any, any, any>>{
             let reds = new Array<number>();
             let blues = new Array<number>();
             let redCount = 8;
-            let blueCount = 9;
+            let blueCount = 8;
+            if (this.startingTeam === 'blue') {
+                blueCount++;
+            }
+            if (this.startingTeam === 'red') {
+                redCount++;
+            }
             while (reds.length < redCount) {
                 let x = this.getRandomInt(0, 24);
                 if (x !== assassin && reds.indexOf(x) === -1) {

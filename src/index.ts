@@ -17,6 +17,7 @@ const router = new VueRouter({
   routes: [
       {
         path: '/',
+        name: 'home',
         component: GameMenu,
       },
     // dynamic segments start with a colon
@@ -62,7 +63,7 @@ let v = new Vue(<ComponentOptions<any, any, any, any>>{
     template: `
     <div>
         
-        <h5>Pick The Code-Words</h5>
+        <h5><router-link :to="'home'">Code-Words</router-link></h5>
         <router-view></router-view>
     </div>
     `,

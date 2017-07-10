@@ -1,12 +1,11 @@
 <template>
-<div class="callout">
+<div class="callout" :class="myColor">
   <div>{{username}} (You are the {{ myColor }} spymaster!)</div>
-  <div class="grid-x">
-    <div class="small-9 cell">
+  <div>
+    <div >
       <input type="text" v-model="clue" />
-    </div>
-    <div class="small-3 cell">
-      <button type="button" class="button primary expand" @click="share"><i class="fa fa-arrow-right"></i> Set Clue</button>
+    
+      <button type="button" class="button primary expanded" @click="share"><i class="fa fa-arrow-right"></i> Set Clue</button>
     </div>
   </div>
   
