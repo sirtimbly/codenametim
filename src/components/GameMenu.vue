@@ -10,10 +10,10 @@
     <ul class="">
         <li v-for="game in codename" :key="game._id" class="card menucard">
             <div class="card-section">
-                <router-link :to="{name: 'view', params: {id: game._id}}">Game "{{game._id}}"</router-link>
+                <router-link :to="{name: 'view', params: {id: game._id}}"> <i class="fa fa-caret-square-o-right"></i> Game "{{game._id}}"</router-link>
             </div>
             <div class="card-divider" v-if="game.isWon">
-                Game in Progress
+                Game in Progress 
             </div>
             <div class="card-divider" v-else>
                 Game won by {{tileType(game.winningTeam)}}
