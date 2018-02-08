@@ -4,11 +4,11 @@
   <div>
     <div >
       <input type="text" v-model="clue" />
-    
+
       <button type="button" class="button primary expanded" @click="share"><i class="fa fa-arrow-right"></i> Set Clue</button>
     </div>
   </div>
-  
+
 </div>
 </template>
 
@@ -36,7 +36,9 @@ export default Vue.extend(<ComponentOptions<any, any, any, any>>{
 
         update[this.myColor+'Clues'].push(this.clue);
 
-        this.$pouch.put('codename', update);
+        this.$pouch.put('codename', update, res => {
+          console.log('updated')
+        });
       }
     }
 });

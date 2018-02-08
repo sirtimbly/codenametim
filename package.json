@@ -17,9 +17,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "pouchdb": "^6.2.0",
-    "pouchdb-authentication": "^0.5.5",
-    "pouchdb-find": "^6.2.0",
+    "pouchdb": "^6.4.3",
+    "pouchdb-authentication": "^1.1.2",
+    "pouchdb-find": "^6.4.3",
     "pouchdb-live-find": "^0.4.0",
     "foundation-sites": "^6.4.1",
     "vue": "git+https://github.com/DanielRosenwasser/vue.git#540a38fb21adb7a7bc394c65e23e6cffb36cd867",

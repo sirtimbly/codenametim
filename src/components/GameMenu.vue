@@ -5,15 +5,15 @@
           <div class="cell medium-8"><h4>Load a game that's already been created...</h4></div>
           <div class="cell medium-4"><router-link :to="'new'" class="button success expanded"><i class="fa fa-plus"></i> Create New Game</router-link></div>
       </div>
-    
-    
+
+
     <ul class="">
         <li v-for="game in codename" :key="game._id" class="card menucard">
             <div class="card-section">
                 <router-link :to="{name: 'view', params: {id: game._id}}"> <i class="fa fa-caret-square-o-right"></i> Game "{{game._id}}"</router-link>
             </div>
             <div class="card-divider" v-if="game.isWon">
-                Game in Progress 
+                Game in Progress
             </div>
             <div class="card-divider" v-else>
                 Game won by {{tileType(game.winningTeam)}}
@@ -47,7 +47,7 @@ export default Vue.component('game-menu', <ComponentOptions<any, any, any, any>>
     },
     mounted: function(){
         // this.pickWords();
-        this.$pouch.sync('codename', 'http://couchdb.timbly.com:5984/codename');//.then(this.createScopedStyle);
+        this.$pouch.sync('codename', 'https://07864162-ad4c-48a3-955f-a0404b9495f3-bluemix.cloudant.com/codename');//.then(this.createScopedStyle);
     },
     components: {
         GameViewer,
@@ -77,7 +77,7 @@ body {
 
 .menucard {
     width: 25%;
-    display: inline-block; 
+    display: inline-block;
     margin: 0 1rem 1rem 0;
 }
 

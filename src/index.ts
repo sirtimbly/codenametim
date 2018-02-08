@@ -1,17 +1,17 @@
 // require('./index.scss');
-import Vue from "vue";
-import VueRouter from 'vue-router';
-import * as PouchDB from "pouchdb";
-import * as pouchdbFind from 'pouchdb-find';
+import PouchDB from 'pouchdb';
+import PouchFind from 'pouchdb-find';
 import * as pouchdbLifeFind from 'pouchdb-live-find';
+import Vue from 'vue';
 import * as vuePouch from 'vue-pouch';
+import VueRouter from 'vue-router';
 import {Game, Tile, TileType} from './models/Game';
 
-import GameLoader from './components/GameLoader.vue';
-import GameMenu from './components/GameMenu.vue';
 import GameCreator from './components/GameCreator.vue';
-import GameViewer from './components/GameViewer.vue';
+import GameLoader from './components/GameLoader.vue';
 import GameMaster from './components/GameMaster.vue';
+import GameMenu from './components/GameMenu.vue';
+import GameViewer from './components/GameViewer.vue';
 
 const router = new VueRouter({
   routes: [
@@ -24,11 +24,11 @@ const router = new VueRouter({
     {
         path: '/new',
         name: 'new',
-        component: GameCreator
+        component: GameCreator,
     },
-    { path: '/game/:id', 
+    { path: '/game/:id',
         name: 'game',
-        component: GameLoader, 
+        component: GameLoader,
         props: true,
         children: [
             {
@@ -48,9 +48,9 @@ const router = new VueRouter({
 
 Vue.use(VueRouter);
 
-// var db = new PouchDB("https://couchdb.timbly.com:5984/codename");
+// var db = new PouchDB("https://couchdb.timbly.com/codename");
 import {ComponentOptions} from 'vue/types/options';
-PouchDB.plugin(pouchdbFind);
+PouchDB.plugin(PouchFind);
 PouchDB.plugin(pouchdbLifeFind);
 
 Vue.use(vuePouch, {
@@ -58,18 +58,18 @@ Vue.use(vuePouch, {
   defaultDB: 'codename'        // the database to use if none is specified in the pouch setting of the vue component
 });
 
-let v = new Vue(<ComponentOptions<any, any, any, any>>{
-    el: "#app",
+const v = new Vue({
+    el: '#app',
     template: `
     <div>
         <div class="top-bar primary">
             <h5 class="logo"><router-link :to="{name:'home'}">Code-Words</router-link></h5>
-        </div> 
+        </div>
         <router-view></router-view>
     </div>
     `,
-    data: { 
-        name: "",
+    data: {
+        name: '',
     },
     components: {
         GameViewer,
@@ -78,6 +78,6 @@ let v = new Vue(<ComponentOptions<any, any, any, any>>{
         GameMaster,
         GameMenu
     },
-    router
+    router,
 
-});
+} as ComponentOptions<any, any, any, any>);

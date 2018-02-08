@@ -9,9 +9,9 @@
                 <div class="cell medium-1 blue"><input type="radio" id="blue" v-model="startingTeam" value="blue"/> Blue</div>
                 <div class="cell medium-1 red"><input type="radio" id="red" v-model="startingTeam" value="red"/> Red</div>
             </radiogroup>
-        </div> 
+        </div>
         <div class="cell medium-6">
-            <label for="">Name your new game  <input type="text" v-model="name" /></label>           
+            <label for="">Name your new game  <input type="text" v-model="name" /></label>
         </div>
         <div class="grid-x grid-gutter-x">
             <div class="cell medium-6">
@@ -112,26 +112,26 @@ export default Vue.extend(<ComponentOptions<any, any, any, any>>{
                     hidden: true
                 })
             }
-                
-            
+
+
 
             let newGame = new Game({
-                _id: this.name, 
+                _id: this.name,
                 wordList: this.pickedWords,
                 tiles: tiles
             });
             console.log("creating new: " + JSON.stringify(newGame));
-            this.$pouch.put('codename', newGame).then(res => {
+            this.$pouch.put('codename', newGame, res => {
                 this.$router.push({
-                    name: 'view', 
-                    params: {id: this.name} 
+                    name: 'view',
+                    params: {id: this.name}
                 });
             });
         }
     },
     mounted: function(){
         this.pickWords();
-        this.$pouch.sync('codename', 'http://couchdb.timbly.com:5984/codename');//.then(this.createScopedStyle);
+        this.$pouch.sync('codename', 'https://07864162-ad4c-48a3-955f-a0404b9495f3-bluemix.cloudant.com/codename');//.then(this.createScopedStyle);
     },
     components: {
         GameViewer

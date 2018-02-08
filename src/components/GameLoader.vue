@@ -8,7 +8,7 @@
           <div class="blue top-bar-left"> {{blueCorrect.length}} of {{blueTiles.length}} </div>
           <div class="red top-bar-right"> {{redCorrect.length}} of {{redTiles.length}} </div>
       </div>
-      
+
       <div v-if="winner" class="callout warning">
           <h2>{{winner}}</h2>
           <router-link class="button primary" :to="{name: 'new'}">Start a new Game</router-link>
@@ -19,11 +19,11 @@
         <game-master :game="currentGame" :username="username" :showType="isMaster"></game-master>
         <button type="button" class="button warning" @click="resign">Resign as Spy Master</button>
     </div>
-    
+
     <div v-else-if="currentGame.redSpymaster == 'pending' || currentGame.blueSpymaster == 'pending'">
-        <label for="">My Username is</label><input type="text" v-model="username" /> and 
-        <button type="button" class="button primary" @click="setMaster('red')" v-if="currentGame.redSpymaster == 'pending'">I'm the Red Spymaster</button>    
-        <button type="button" class="button primary" @click="setMaster('blue')" v-if="currentGame.blueSpymaster == 'pending'">I'm the Blue Spymaster</button>    
+        <label for="">My Username is</label><input type="text" v-model="username" /> and
+        <button type="button" class="button primary" @click="setMaster('red')" v-if="currentGame.redSpymaster == 'pending'">I'm the Red Spymaster</button>
+        <button type="button" class="button primary" @click="setMaster('blue')" v-if="currentGame.blueSpymaster == 'pending'">I'm the Blue Spymaster</button>
     </div>
     <div v-else>
         <div v-if="loggingIn">
@@ -33,7 +33,7 @@
         </div>
         <button type="button" class="button secondary" v-else @click="loggingIn = true">Spymaster Re-connect</button>
     </div>
-    
+
   </div>
 </div>
 </template>
@@ -59,7 +59,7 @@ export default Vue.component('game-loader', <ComponentOptions<any, any, any, any
         }
     },
     computed: {
-        isMaster: function() {    
+        isMaster: function() {
             return (this.username === this.currentGame.redSpymaster || this.username === this.currentGame.blueSpymaster);
         },
         myColor: function() {
@@ -82,7 +82,7 @@ export default Vue.component('game-loader', <ComponentOptions<any, any, any, any
         },
         winner: function():string {
             let result = '';
-            
+
             if (this.assassin.hidden === false) {
                 result = 'The ASSASSIN got you all! No winner.'
                 this.finishGame(TileType.Assassin);
@@ -118,7 +118,7 @@ export default Vue.component('game-loader', <ComponentOptions<any, any, any, any
             // this.isMaster = true;
             let newGame = this.currentGame;
             newGame[type+"Spymaster"] = this.username;
-            this.$pouch.put('codename', newGame);
+            this.$pouch.put('codename', newGame, res => {console.log("updated")});
         },
         login: function(type:string) {
             this.loggingIn = false;
@@ -130,7 +130,7 @@ export default Vue.component('game-loader', <ComponentOptions<any, any, any, any
             let update = this.currentGame;
             this.username = 'resigned';
             update[this.myColor+"Spymaster"] = 'pending';
-            this.$pouch.put('codename', update);
+            this.$pouch.put('codename', update, res => {console.log("updated")});
         },
         showCard: function(eventData:Tile) {
             console.log("showing card: " + JSON.stringify(eventData));
@@ -142,13 +142,15 @@ export default Vue.component('game-loader', <ComponentOptions<any, any, any, any
                 }
                 return t;
             });
-            this.$pouch.put('codename', update);
+            this.$pouch.put('codename', update, res => {console.log("updated")});
         },
         finishGame: function(winner:TileType) {
             let update = this.currentGame as Game;
             update.winningTeam = winner;
             update.isWon = true;
-            this.$pouch.put('codename', update);
+            this.$pouch.put('codename', update, res => {
+                console.log("updated")
+            });
         }
     },
     events: {
@@ -158,7 +160,7 @@ export default Vue.component('game-loader', <ComponentOptions<any, any, any, any
     },
     mounted: function(){
         // this.pickWords();
-        this.$pouch.sync('codename', 'http://couchdb.timbly.com:5984/codename');//.then(this.createScopedStyle);
+        this.$pouch.sync('codename', 'https://07864162-ad4c-48a3-955f-a0404b9495f3-bluemix.cloudant.com/codename');//.then(this.createScopedStyle);
     },
     components: {
         GameViewer,
