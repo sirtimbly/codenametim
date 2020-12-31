@@ -143,7 +143,7 @@ export default Vue.extend(<ComponentOptions<any, any, any, any>>{
 });
 </script>
 
-<style lang="scss">
+<style lang="css">
     .gameboard {
         padding: 2em;
     }

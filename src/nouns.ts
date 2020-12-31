@@ -1,4 +1,12 @@
 export const nouns = [
+  "Popcorn",
+  "Icecream ",
+  "Trees",
+  "Candle",
+  "Tires",
+  "Velociraptor",
+  "Pterodactyl",
+  "Sweatshirt",
   "Chris",
   "Trump",
   "Biden",

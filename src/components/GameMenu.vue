@@ -60,8 +60,7 @@ export default Vue.component('game-menu', <ComponentOptions<any, any, any, any>>
 });
 </script>
 
-<style lang="scss">
-@import '~foundation-sites/scss/foundation.scss';
+<style lang="css">
 
 h1 {
         font-family: Arial, Helvetica, sans-serif;

@@ -69,10 +69,10 @@ export default Vue.component('game-viewer', <ComponentOptions<any, any, any, any
       width: 20%;
       margin: 0;
       padding: .5em;
-      
-      
+
+
       @media only screen and (max-width: 480px)  {
-        
+
         padding: 4px;
       }
     }
