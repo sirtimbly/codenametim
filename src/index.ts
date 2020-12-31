@@ -1,16 +1,18 @@
 // require('./index.scss');
-import PouchDB from "pouchdb";
+import PouchDB from "pouchdb-browser";
 import PouchFind from "pouchdb-find";
 import * as pouchdbLifeFind from "pouchdb-live-find";
 import Vue from "vue";
 import * as vuePouch from "vue-pouch";
 import VueRouter from "vue-router";
-
+import process from "process";
 import GameCreator from "./components/GameCreator.vue";
 import GameLoader from "./components/GameLoader.vue";
 import GameMaster from "./components/GameMaster.vue";
 import GameMenu from "./components/GameMenu.vue";
 import GameViewer from "./components/GameViewer.vue";
+
+(window as any).process = process;
 
 const router = new VueRouter({
   routes: [

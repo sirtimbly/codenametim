@@ -37,18 +37,6 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: "vue-loader",
-        // use: ["vue-loader"],
-        // use: ["vue-style-loader", "css-loader", "sass-loader"],
-        // options: {
-        //   loaders: {
-        //     // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-        //     // the "scss" and "sass" values for the lang attribute to the right configs here.
-        //     // other preprocessors should work out of the box, no loader config like this necessary.
-        //     scss: "vue-style-loader!css-loader!sass-loader",
-        //     sass: "vue-style-loader!css-loader!sass-loader?indentedSyntax",
-        //   },
-        //   // other vue-loader options go here
-        // },
       },
       {
         test: /\.tsx?$/,
@@ -85,7 +73,12 @@ module.exports = {
   performance: {
     hints: false,
   },
-  plugins: [new VueLoaderPlugin(), new HtmlWebpackPlugin()],
+  plugins: [
+    new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      template: "src/index.html",
+    }),
+  ],
   // devtool: "#eval-source-map",
 };
 

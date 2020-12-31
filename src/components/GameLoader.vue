@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="top-bar">
-          <div class="blue top-bar-left"> <i class="fa fa-user" v-if="currentGame.blueSpymaster !== 'pending'"></i> Blue Spymaster says: <strong>"{{latestClue('blue')}}"</strong> </div>
-          <div class="red top-bar-right"> <i class="fa fa-user" v-if="currentGame.redSpymaster !== 'pending'"></i> Red Spymaster says: <strong>"{{latestClue('red')}}"</strong> </div>
+          <h3 class="blue top-bar-left"> <i class="fa fa-user" v-if="currentGame.blueSpymaster !== 'pending'"></i> Blue Spymaster says: <strong>"{{latestClue('blue')}}"</strong> </h3>
+          <h3 class="red top-bar-right"> <i class="fa fa-user" v-if="currentGame.redSpymaster !== 'pending'"></i> Red Spymaster says: <strong>"{{latestClue('red')}}"</strong> </h3>
       </div>
         <div class="top-bar">
-          <div class="blue top-bar-left"> {{blueCorrect.length}} of {{blueTiles.length}} </div>
-          <div class="red top-bar-right"> {{redCorrect.length}} of {{redTiles.length}} </div>
+          <div class="blue top-bar-left font-bold"> {{blueCorrect.length}} of {{blueTiles.length}} </div>
+          <div class="red top-bar-right font-bold"> {{redCorrect.length}} of {{redTiles.length}} </div>
       </div>
 
       <div v-if="winner" class="callout warning">
