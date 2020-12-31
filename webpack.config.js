@@ -2,12 +2,13 @@ var path = require("path");
 var webpack = require("webpack");
 const Dotenv = require("dotenv-webpack");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, "./dist"),
-    publicPath: "/dist/",
+    publicPath: "/",
     filename: "build.js",
   },
   module: {
@@ -84,7 +85,7 @@ module.exports = {
   performance: {
     hints: false,
   },
-  plugins: [new VueLoaderPlugin()],
+  plugins: [new VueLoaderPlugin(), new HtmlWebpackPlugin()],
   // devtool: "#eval-source-map",
 };
 
