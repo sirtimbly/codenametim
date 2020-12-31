@@ -33,6 +33,7 @@ import {ComponentOptions} from 'vue/types/options';
 import {nouns} from '../nouns';
 import GameViewer from './GameViewer.vue';
 import {Game,Tile,TileType} from '../models/game';
+import {connectionString} from '../connection'
 
 export default Vue.extend(<ComponentOptions<any, any, any, any>>{
     props: ['id'],
@@ -131,7 +132,7 @@ export default Vue.extend(<ComponentOptions<any, any, any, any>>{
     },
     mounted: function(){
         this.pickWords();
-        this.$pouch.sync('codename', 'https://07864162-ad4c-48a3-955f-a0404b9495f3-bluemix.cloudant.com/codename');//.then(this.createScopedStyle);
+        this.$pouch.sync('codename', connectionString);//.then(this.createScopedStyle);
     },
     components: {
         GameViewer
