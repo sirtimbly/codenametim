@@ -51,17 +51,21 @@ export default Vue.component('game-viewer', <ComponentOptions<any, any, any, any
 .tile {
     box-sizing: border-box;
     display: block;
-    padding: 20px 6px;
+    padding: 1rem .5rem;
     border: 2px solid #444;
+    border-radius: 3px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 2rem;
     height: 100%;
     opacity: 0.8;
+    word-break: break-all;
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
 
     @media only screen and (max-width: 480px)  {
-        font-size: 15px;
-        padding: 10px 4px;
+        font-size: 14px;
+        padding: 8px 3px;
+        border-width: 1px;
     }
 
     &-cell {
@@ -95,11 +99,11 @@ export default Vue.component('game-viewer', <ComponentOptions<any, any, any, any
   background-color: #c98d4e;
 }
 .Red {
-  background-color: #c02c1f;
+  background-color: #761c14;
   color: white;
 }
 .Blue {
-  background-color: #1768b2;
+  background-color: #0c4172;
   color: white;
 }
 </style>

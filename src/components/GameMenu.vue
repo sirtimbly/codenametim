@@ -12,11 +12,12 @@
             <div class="card-section">
                 <router-link :to="{name: 'view', params: {id: game._id}}"> <i class="fa fa-caret-square-o-right"></i> Game "{{game._id}}"</router-link>
             </div>
-            <div class="card-divider" v-if="game.isWon">
+            <div class="card-divider" v-if="!game.isWon">
                 Game in Progress
             </div>
             <div class="card-divider" v-else>
-                Game won by {{tileType(game.winningTeam)}}
+                <div>Game won by {{tileType(game.winningTeam)}}</div>
+                <button class="button btn-delete" @click="deleteGame(game)"><i class="fa fa-trash"></i></button>
             </div>
         </li>
     </ul>
@@ -44,6 +45,9 @@ export default Vue.component('game-menu', <ComponentOptions<any, any, any, any>>
     methods: {
         tileType: function(val:TileType):string {
             return TileType[val];
+        },
+        deleteGame: function(doc) {
+            this.$pouch.remove(doc).then(() => console.log('removed doc'))
         }
     },
     mounted: function(){
@@ -89,6 +93,10 @@ body {
 .blue {
     color: #1768b2;
     border-color: #1768b2;
+}
+
+.btn-delete {
+    margin: 0 0 0 8px;
 }
 </style>
 
