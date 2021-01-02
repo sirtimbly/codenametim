@@ -17,7 +17,7 @@
             </div>
             <div class="card-divider" v-else>
                 <div>Game won by {{tileType(game.winningTeam)}}</div>
-                <button class="button btn-delete" @click="deleteGame(game)"><i class="fa fa-trash"></i></button>
+                <button class="button btn-delete" @click="$pouch.remove('codename', game)"><i class="fa fa-trash"></i></button>
             </div>
         </li>
     </ul>

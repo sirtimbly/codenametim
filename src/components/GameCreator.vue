@@ -3,15 +3,18 @@
   <div class="gameboard">
       <div class="callout">
         <h4>Create New Game</h4>
-        <div>
-            <radiogroup class="grid-x bordered">
-                <div class="cell medium-5"><strong>Starting Team:</strong></div>
-                <div class="cell medium-1 blue"><input type="radio" id="blue" v-model="startingTeam" value="blue"/> Blue</div>
-                <div class="cell medium-1 red"><input type="radio" id="red" v-model="startingTeam" value="red"/> Red</div>
-            </radiogroup>
-        </div>
-        <div class="cell medium-6">
-            <label for="">Name your new game  <input type="text" v-model="name" /></label>
+        <div class="grid-x grid-gutter-x gutter-medium">
+            <div class="cell medium-6">
+                <label for="">Name your new game  <input type="text" v-model="name" /></label>
+            </div>
+            <div class="cell medium-5">
+                <label class="">Starting Team:</label>
+                <radiogroup class="grid-x bordered">
+                    <div class="cell medium-1 blue"><input type="radio" id="blue" v-model="startingTeam" value="blue"/> Blue</div>
+                    <div class="cell medium-1 red"><input type="radio" id="red" v-model="startingTeam" value="red"/> Red</div>
+                </radiogroup>
+            </div>
+
         </div>
         <div class="grid-x grid-gutter-x">
             <div class="cell medium-6">

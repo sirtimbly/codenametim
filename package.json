@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@types/node": "^14.14.17",
+    "@types/pouchdb": "^6.4.0",
     "cross-env": "^5.0.1",
     "css-loader": "^5.0.1",
     "dotenv-webpack": "^6.0.0",

@@ -52,15 +52,17 @@ export default Vue.component('game-viewer', <ComponentOptions<any, any, any, any
     box-sizing: border-box;
     display: block;
     padding: 1rem .5rem;
-    border: 2px solid #444;
+    border: 2px solid #aaaaaa;
     border-radius: 3px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2rem;
+    font-weight: bold;
     height: 100%;
     opacity: 0.8;
     word-break: break-all;
     box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+    text-transform: uppercase;
 
     @media only screen and (max-width: 480px)  {
         font-size: 14px;
@@ -87,8 +89,9 @@ export default Vue.component('game-viewer', <ComponentOptions<any, any, any, any
 }
 
 .revealed {
-  font-weight: bold;
-  border-width: 3px;
+  font-weight: normal;
+  border-width: 2px;
+  border-color: #efefef;
   opacity: 1;
 }
 .Assassin {
